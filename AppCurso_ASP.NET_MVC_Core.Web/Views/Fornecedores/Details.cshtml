@@ -1,0 +1,44 @@
+﻿@model AppCurso_ASP.NET_MVC_Core.Web.ViewModels.FornecedorViewModel
+@using AppCurso_ASP.NET_MVC_Core.Web.Extensions
+
+@{
+	ViewData["Title"] = $"Detalhes - {Model.Nome}";
+}
+
+<h4 style="padding-top: 50px">@ViewData["Title"]</h4>
+<hr />
+
+<div class="row">
+	<div class="col col-md-6">
+		<dl>
+			<dt>
+				@Html.DisplayNameFor(model => model.Nome)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Nome)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Documento)
+			</dt>
+			<dd>
+				@this.FormataDocumento(Model.TipoFornecedor, Model.Documento)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Ativo)
+			</dt>
+			<dd>
+				@this.ProdutoAtivo(Model.Ativo)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.TipoFornecedor)
+			</dt>
+			<dd>
+				@this.RetornarTipoForncedor(Model.TipoFornecedor)
+			</dd>
+		</dl>
+		<a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+		<a class="btn btn-dark" disable-by-claim-name="Fornecedor" disable-by-claim-value="Editar" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+
+		<partial name="_DetalhesEndereco"/>
+	</div>
+</div>

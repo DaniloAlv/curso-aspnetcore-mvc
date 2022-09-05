@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AppCurso_ASP.NET_MVC_Core.Web.ViewModels.FornecedorViewModel>
+@using AppCurso_ASP.NET_MVC_Core.Web.Extensions
+
+@{
+    ViewData["Title"] = "Fornecedores";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Adicionar Fornecedor <span class="fa fa-plus"></span></a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoFornecedor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @this.FormataDocumento(item.TipoFornecedor, item.Documento)
+            </td>
+            <td>
+                @this.ProdutoAtivo(item.Ativo)
+            </td>
+            <td>
+                @this.RetornarTipoForncedor(item.TipoFornecedor)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><span class="fa fa-info"></span></a>
+                <a class="btn btn-warning" supress-by-claim-name="Fornecedor" supress-by-claim-value="Editar" asp-action="Edit" asp-route-id="@item.Id"><span class="fa fa-pencil-alt"></span></a>
+                <a class="btn btn-danger" supress-by-claim-name="Fornecedor" supress-by-claim-value="Excluir" asp-action="Delete" asp-route-id="@item.Id"><span class="fa fa-trash"></span></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

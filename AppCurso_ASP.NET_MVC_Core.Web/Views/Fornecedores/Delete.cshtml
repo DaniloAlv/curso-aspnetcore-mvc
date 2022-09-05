@@ -1,0 +1,46 @@
+﻿@model AppCurso_ASP.NET_MVC_Core.Web.ViewModels.FornecedorViewModel
+@using AppCurso_ASP.NET_MVC_Core.Web.Extensions
+
+@{
+	ViewData["Title"] = $"Remover {Model.Nome}";
+}
+
+<h3 style="padding-top: 50px">Tem certeza que deseja deletar @Model.Nome?</h3>
+<hr />
+<div class="row">
+	<div class="col col-md-6">
+		<dl>
+			<dt>
+				@Html.DisplayNameFor(model => model.Nome)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Nome)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Documento)
+			</dt>
+			<dd>
+				@this.FormataDocumento(Model.TipoFornecedor, Model.Documento)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Ativo)
+			</dt>
+			<dd>
+				@this.ProdutoAtivo(Model.Ativo)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.TipoFornecedor)
+			</dt>
+			<dd>
+				@this.RetornarTipoForncedor(Model.TipoFornecedor)
+			</dd>
+		</dl>
+
+		<form asp-action="Delete">
+			<vc:summary></vc:summary>
+			<input type="hidden" asp-for="Id" />
+			<a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+			<input type="submit" value="Deletar" class="btn btn-danger" />
+		</form>
+	</div>
+</div>

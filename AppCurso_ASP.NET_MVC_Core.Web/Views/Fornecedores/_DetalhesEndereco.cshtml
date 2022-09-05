@@ -1,0 +1,70 @@
+﻿@model AppCurso_ASP.NET_MVC_Core.Web.ViewModels.FornecedorViewModel
+@using AppCurso_ASP.NET_MVC_Core.Web.Extensions
+
+<div style="padding-top: 20px">
+	<div>
+		<hr />
+		<h4>
+			Endereço
+		</h4>
+	</div>
+	@if (Model != null)
+	{
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Logradouro)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Numero)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Complemento)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.CEP)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Bairro)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Cidade)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Endereco.Estado)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Logradouro)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Numero)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Complemento)
+					</td>
+					<td>
+						@this.FormataCEP(Model.Endereco.CEP)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Bairro)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Cidade)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Endereco.Estado)
+					</td>
+					<td>
+						<a supress-by-action="Edit,ObterEndereco" class="btn btn-info" asp-action="AtualizarEndereco" asp-route-fornecedorId="@Model.Id" data-modal=""><i title="Editar" class="fa fa-pencil-alt"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	}
+</div>
